@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <script src="main.js"></script> -->
+</head>
+<body>
+    <div>
+        <h2>Update CSS Variables with <span class="hl">JS</span></h2>
+        <div class="controls">
+            <label for="spacing">Spacing</label>
+            <input id="spaceing" type="range" min="10" max="200" value="10" data-sizing="px" name="spacing">
+            <label for="blur">Blur</label>
+            <input id="blur" type="range" min="0" max="25" value="10" data-sizing="px" name="blur">
+            <label for="color">Base Color</label>
+            <input id="color" type="color" name="base" value="#ffc600">
+        </div>
+
+        <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+    </div>
+</body>
+<script>
+     const inputs = document.querySelectorAll('.controls input');
+     inputs.forEach(input => input.addEventListener('mousemove', updateData));
+     inputs.forEach(input => input.addEventListener('change', updateData));
+     function updateData(e) {
+         const suffix = this.dataset.sizing || ' ';
+         document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+     }
+</script>
+</html>
